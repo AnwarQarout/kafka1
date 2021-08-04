@@ -1,17 +1,11 @@
 *** Variables ***
 ${existingTopic}    tempTopic
+${nonExistingTopic}    aTempTopic
+${existingFile}    file.txt
+${outputF}        outfile.txt
+${lineInFile}     third line
 
 *** Keywords ***
-Verify Status Of Topic Creation
-    [Arguments]    ${topic}
-    ${DoesExist}    check if topic exists    ${topic}
-    IF    ${DoesExist}==False
-    create topic    ${topic}
-    ${output}    check if topic exists    ${topic}
-    Pass Execution    "${output}==True"
-    ELSE IF    ${DoesExist}==True
-    create topic    ${topic}
-
 Verify Content Of Topic List Doesnt Change After Creation
     ${listBefore}    list all topics
     Run Keyword And Expect Error    STARTS:TopicAlreadyExistsError    create topic    ${existingTopic}
