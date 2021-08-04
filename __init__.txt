@@ -1,0 +1,4 @@
+*** Settings ***
+Resource          resources.robot
+Library           TestKafka.py
+Library           OperatingSystem
